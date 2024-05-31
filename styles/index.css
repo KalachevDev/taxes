@@ -3,6 +3,8 @@
     flex-direction: column;
 
     align-items: center;
+
+    padding-inline: 16px;
 }
 
 .form-row {

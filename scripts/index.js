@@ -17,7 +17,7 @@ form.addEventListener('submit', event => {
 
     const info = getPrint(amount);
 
-    document.getElementById('result').innerHTML = `<pre>${info}</pre>`;
+    document.getElementById('result').innerHTML = info;
 })
 
 const multiplyButton = document.getElementById('multiply-button');
@@ -111,5 +111,17 @@ function getPrint(grossPerYear) {
 
     const formatAmount = Intl.NumberFormat('ru').format;
 
-    return `Текущая зарплата в год (чистыми): ${formatAmount(currentNetPerYear)} \nБудущая зарплата в год (чистыми): ${formatAmount(newNetPerYear)} \n---\nТекущая зарплата в месяц (чистыми): ${formatAmount(currentNetPerMonth)} \nБудущая зарплата в месяц (чистыми): ${formatAmount(newNetPerMonth)} \n---\nТекущие налоги: ${formatAmount(currentTax)}\nНовые налоги: ${formatAmount(newTax)}\n---\nРазница налогов в %: ${taxDiffInPercent}\nРазница налогов в валюте (в месяц): ${formatAmount(taxDiffInCurrencyPerMonth)}`;
+    return `
+        <div><strong>Текущая зарплата в год (чистыми): </strong> ${formatAmount(currentNetPerYear)}</div>
+        <div><strong>Будущая зарплата в год (чистыми): </strong> ${formatAmount(newNetPerYear)}</div>
+        <div>---</div>
+        <div><strong>Текущая зарплата в месяц (чистыми): </strong> ${formatAmount(currentNetPerMonth)}</div>
+        <div><strong>Будущая зарплата в месяц (чистыми): </strong> ${formatAmount(newNetPerMonth)}</div>
+        <div>---</div>
+        <div><strong>Текущие налоги: </strong> ${formatAmount(currentTax)}</div>
+        <div><strong>Новые налоги: </strong> ${formatAmount(newTax)}</div>
+        <div>---</div>
+        <div><strong>Разница налогов в %: </strong> ${taxDiffInPercent}</div>
+        <div><strong>Разница налогов в валюте (в месяц): </strong> ${formatAmount(taxDiffInCurrencyPerMonth)}</div>
+    `;
 }
